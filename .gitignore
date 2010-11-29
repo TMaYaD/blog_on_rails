@@ -1,0 +1,10 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+*.swp
+*~
+
+config/database.yml
+tmp/restart.txt
+public/stylesheets/*.css
