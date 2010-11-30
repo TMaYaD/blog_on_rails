@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+admin = Factory.create(:user, :email => 'admin@loonyb.in',
+                              :display_name => 'Admin',
+                              :password => 'topsecret',
+                              :password_confirmation => 'topsecret'
+                      )
