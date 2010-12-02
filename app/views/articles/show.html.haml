@@ -1,18 +1,20 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @article.title
-%p
-  %b Content:
-  = @article.content
-%p
-  %b Parent:
-  = @article.parent
-%p
-  %b Author:
-  = @article.author
+%h3= @article.title
+%p= @article.content
+%ul
+  %li= @article.parent && @article.parent.title
+  %li= @article.author
+  %li= @article.created_at
+  %li= link_to 'Edit', edit_article_path(@article)
 
-= link_to 'Edit', edit_article_path(@article)
-\|
+- @article.replies.each do |reply|
+  %h4= reply.title
+  %p= reply.content
+  %ul
+    %li= reply.author
+    %li= reply.created_at
+    %li= link_to 'Show', reply
+= render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
+
 = link_to 'Back', articles_path
