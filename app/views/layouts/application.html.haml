@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title LoonyBin
+  %body
+    %header
+      %hgroup#title
+        %h1= link_to 'LoonyBin', root_url
+        %h2 Technology won't solve every problem; Crazyness might...
+      %hgroup#search
+        =form_tag 'http://google.com/search', :method => :get do
+          =search_field_tag :q
+          =hidden_field_tag :sitesearch, "http://loonyb.in/"
+          =submit_tag :search
+    #container
+      =yield
+    %aside
+      %section.left
+        %h3 About
+      %section.center
+        %h3 Tags
+      %section.right
+        %h3 Recently
+    %footer
