@@ -1,0 +1,9 @@
+@import "compass/css3/inline-block";
+
+header, aside, footer {
+  display: block;
+}
+
+hgroup, article {
+  @include inline-block;
+}

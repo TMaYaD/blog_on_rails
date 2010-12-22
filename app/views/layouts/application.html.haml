@@ -3,27 +3,28 @@
   %head
     %title LoonyBin
 
+    = javascript_include_tag :defaults
+
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'application.css'
 
-    = javascript_include_tag :defaults
     = csrf_meta_tag
     = yield :head
-  %body.bp.two-col
+  %body
     %header
       %hgroup#title
         %h1= link_to 'LoonyBin', root_url
         %h2 Technology won't solve every problem; Crazyness might...
       %hgroup#search
         =form_tag 'http://google.com/search', :method => :get do
-          =search_field_tag :q
+          =search_field_tag :q, nil, :class => 'text'
           =hidden_field_tag :sitesearch, "http://loonyb.in/"
           =submit_tag :search
-    #wrapper
-      #container
-        =yield
+    #container
+      =yield
     %aside
       %section.left
         %h3 About
@@ -32,3 +33,4 @@
       %section.right
         %h3 Recently
     %footer
+      %p All rights reserved &copy; 2010, LoonyBin

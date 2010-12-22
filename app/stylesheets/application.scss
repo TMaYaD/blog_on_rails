@@ -1,0 +1,109 @@
+@import "partials/base";
+@import "blueprint/colors";
+@import "compass/utilities/lists/horizontal-list";
+
+body {
+  header, #container, aside, footer {
+    padding: 2em $margin;
+    min-width: $min-width;
+    max-width: $max-width;
+  }
+
+  header, #container {
+    background-color: $primary-background-color;
+  }
+  aside, footer {
+    background-color: $secondary-background-color;
+  }
+
+  a, a:visited, a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+//////////////////////////
+//                      //
+//        Header        //
+//                      //
+//////////////////////////
+$search-box-width: 200px;
+#title {
+  h1 {
+    border-right: 1px solid ($border-color * 2);
+    float: left;
+    font-size: 2.25em;
+    margin: 0 0.5em 0 0;
+    padding: 0 0.5em 0.25em 0;
+    font-variant: small-caps;
+  }
+  h2 {
+    font-size: 1.25em;
+    padding-top: 0.25em;
+  }
+  width: 100%;
+  margin-right: -$search-box-width;
+}
+
+#search form {
+  float: right;
+  margin: 1em 0 0;
+  text-align: right;
+  width: $search-box-width;
+  input {
+    width: floor(7 * $search-box-width / 8) - 12px;
+    padding: 0;
+    &[type=submit] {
+      width: ceil($search-box-width / 8);
+      margin-right: 0;
+      border: 0;
+      color: transparent;
+      background: url("/images/search.gif") no-repeat center transparent;
+    }
+  }
+}
+
+//////////////////////////
+//                      //
+//        Main          //
+//                      //
+//////////////////////////
+#container {
+  article {
+    width: 48%;
+    margin-left: 4%;
+    &:first-child {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 1.15em;
+      color: $font-color + #4c4c4c;
+      margin-bottom: 1.5em;
+      a {
+        border-bottom: 1px dotted $border-color;
+      }
+    }
+
+    p {
+      text-align: justify;
+      line-height: 1.75em;
+    }
+
+    ul.meta {
+      @include horizontal-list(0.5em, right);
+      font-size: 0.95em;
+      color: $quiet-color;
+      border-top: 1px solid $border-color;
+      padding: 0.5em;
+      li {
+        border-left: 1px solid $border-color;
+        line-height: 0.8em;
+        &:first-child {
+          border-left: none;
+        }
+      }
+    }
+  }
+}
+
