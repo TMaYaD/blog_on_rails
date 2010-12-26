@@ -31,3 +31,6 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "factory_girl_generator"
 end
+group :development do
+  gem "heroku"
+end
