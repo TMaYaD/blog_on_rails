@@ -1,20 +1,33 @@
-%p#notice= notice
+%aside
+  %section
+    %h1 About this article
+    %p You're currently reading "#{@article.title}", an entry on LoonyBin
+    -if @article.parent
+      %dl
+        %dt Parent
+        %dd= link_to @article.parent.title, @article.parent
+    %dl
+      %dt Author
+      %dd= @article.author || "anonymous"
+    %dl
+      %dt Published
+      %dd= @article.created_at
+      //%li= link_to 'Edit', edit_article_path(@article)
+    %p= link_to 'Back', articles_path
+%article
+  %h1= @article.title
+  %section=raw @article.content
 
-%h3= @article.title
-%p=raw @article.content
-%ul
-  %li= @article.parent && @article.parent.title
-  %li= @article.author
-  %li= @article.created_at
-  %li=# link_to 'Edit', edit_article_path(@article)
+-content_for :ancillary do
+  %aside=# render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
+  - @article.replies.each do |reply|
+    %article
+      %h4= reply.title
+      %section=raw reply.content
+      %ul.meta
+        %li= reply.author
+        %li= reply.created_at
+        %li= link_to 'Show', reply
 
-- @article.replies.each do |reply|
-  %h4= reply.title
-  %p=raw reply.content
-  %ul
-    %li= reply.author
-    %li= reply.created_at
-    %li= link_to 'Show', reply
-=# render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
-
-= link_to 'Back', articles_path
+-content_for :head do
+  =stylesheet_link_tag 'show'

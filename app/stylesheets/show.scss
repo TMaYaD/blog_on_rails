@@ -1,0 +1,42 @@
+@import 'partials/base';
+@import 'partials/mixins';
+
+article {
+  @include multicolumn(30%, 2);
+}
+.main, .ancillary {
+  aside {
+    display: inline-block;
+    @include multicolumn(30%);
+    padding: 0.65em 0 0 0;
+    section {
+      @include multicolumn(100%);
+    }
+
+    p {
+      @extend dl;
+      border-top: $border;
+    }
+
+    dl {
+      border-bottom: $border;
+      margin: 0;
+      padding: 0.5em 0 0.6em;
+    }
+
+    dd {
+      display:inline;
+      margin: 0;
+    }
+
+    dt {
+      @extend dd;
+      color: #aaaaaa;
+      font-weight: normal;
+      &:after {
+        content: ":";
+      }
+    }
+
+  }
+}

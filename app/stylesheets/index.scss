@@ -1,0 +1,12 @@
+@import 'partials/base';
+@import 'partials/mixins';
+
+article {
+  @include multicolumn(48%);
+  section {
+    max-height: 12 * $line-height;
+  }
+}
+.ancillary {
+  display: hidden;
+}

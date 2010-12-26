@@ -23,8 +23,10 @@
           =search_field_tag :q, nil, :class => 'text'
           =hidden_field_tag :sitesearch, "http://loonyb.in/"
           =submit_tag :search
-    #container
+    .main
       =yield
+    .ancillary
+      =yield :ancillary
     %aside
       %section.left
         %h1 About

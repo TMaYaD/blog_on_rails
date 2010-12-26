@@ -2,20 +2,27 @@
 @import "blueprint/colors";
 @import "compass/utilities/lists/horizontal-list";
 @import "compass/utilities/lists/bullets";
+@import 'partials/mixins';
 
 body {
-  header, #container, aside, footer {
+  >header, >.main, >.ancillary, >aside, >footer {
     padding: 2em $margin;
     min-width: $min-width;
     max-width: $max-width;
   }
 
-  header, #container {
+  >header, >.main, >.ancillary {
     background-color: $primary-background-color;
   }
-  aside, footer {
-    background-color: $secondary-background-color;
+  >.ancillary {
+    background-color: #0c0c0c;
+    border-top: 1px solid #1C1C1C;
   }
+
+  background-color: $secondary-background-color;
+  //>aside, >footer {
+  //  background-color: $secondary-background-color;
+  //}
 
   a, a:visited, a:hover {
     text-decoration: none;
@@ -81,41 +88,30 @@ article h1, section h1 {
 //        Main          //
 //                      //
 //////////////////////////
-#container {
-  article {
-    width: 48%;
-    margin-left: 4%;
+article {
+  h1 a {
+    border-bottom: 1px dotted $border-color;
+  }
 
+  section {
+    text-align: justify;
+    line-height: $line-height;
+    overflow: hidden;
+  }
+}
+
+ul.meta {
+  @include horizontal-list(0.5em, right);
+  font-size: 0.95em;
+  color: $quiet-color;
+  border-top: $border;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  li {
+    border-left: $border;
+    line-height: 0.8em;
     &:first-child {
-      margin: 0;
-    }
-
-    h1 a {
-      border-bottom: 1px dotted $border-color;
-    }
-
-    section {
-      text-align: justify;
-      $line-height: 1.75em;
-      line-height: $line-height;
-      max-height: 12 * $line-height;
-      overflow: hidden;
-    }
-
-    ul.meta {
-      @include horizontal-list(0.5em, right);
-      font-size: 0.95em;
-      color: $quiet-color;
-      border-top: 1px solid $border-color;
-      padding: 0.5em;
-      margin-top: 0.5em;
-      li {
-        border-left: 1px solid $border-color;
-        line-height: 0.8em;
-        &:first-child {
-          border-left: none;
-        }
-      }
+      border-left: none;
     }
   }
 }
@@ -125,15 +121,14 @@ article h1, section h1 {
 //        Ancillary         //
 //                          //
 //////////////////////////////
-aside {
+body>aside {
   color: $alt-text-color;
   section {
-    width: 30%;
-    margin-left: 5%;
-    &:first-child {
-      margin-left: 0;
-    }
+    @include multicolumn(30%);
   }
+}
+
+aside {
   h1 {
     color: white;
   }

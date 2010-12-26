@@ -1,0 +1,16 @@
+@mixin multicolumn($width, $span: 1) {
+  $cols: floor(100/$width);
+  $total-margin: 100 - ($cols * $width);
+
+  @if $cols == 1 {
+    width: $width;
+    margin-right: $total-margin;
+  } @else {
+    $margin-width: floor($total-margin / ($cols - 1));
+    width: $width * $span + $margin-width * ($span - 1);
+    margin-right: $margin-width;
+    &:last-child {
+      margin-right: $total-margin - (($cols - 1) * $margin-width);
+    }
+  }
+}
