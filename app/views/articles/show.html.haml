@@ -1,7 +1,7 @@
 %p#notice= notice
 
 %h3= @article.title
-%p= @article.content
+%p=raw @article.content
 %ul
   %li= @article.parent && @article.parent.title
   %li= @article.author
@@ -10,7 +10,7 @@
 
 - @article.replies.each do |reply|
   %h4= reply.title
-  %p= reply.content
+  %p=raw reply.content
   %ul
     %li= reply.author
     %li= reply.created_at
