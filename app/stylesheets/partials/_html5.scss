@@ -4,6 +4,7 @@ header, aside, footer {
   display: block;
 }
 
-hgroup, article {
+hgroup, article, section {
   @include inline-block;
+  vertical-align: top;
 }

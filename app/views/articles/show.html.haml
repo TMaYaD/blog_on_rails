@@ -6,7 +6,7 @@
   %li= @article.parent && @article.parent.title
   %li= @article.author
   %li= @article.created_at
-  %li= link_to 'Edit', edit_article_path(@article)
+  %li=# link_to 'Edit', edit_article_path(@article)
 
 - @article.replies.each do |reply|
   %h4= reply.title
@@ -15,6 +15,6 @@
     %li= reply.author
     %li= reply.created_at
     %li= link_to 'Show', reply
-= render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
+=# render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
 
 = link_to 'Back', articles_path

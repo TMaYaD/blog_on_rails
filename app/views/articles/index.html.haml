@@ -1,10 +1,18 @@
-- @articles.each do |article|
+- @articles[0..1].each do |article|
   %article
     %h1= link_to article.title, article
-    %p= article.content
+    %section= raw article.content
     %ul.meta
       %li= article.parent && article.parent.title
       %li= article.author
       %li= article.created_at
-      %li= link_to 'Edit', edit_article_path(article)
-      %li= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
+      %li=# link_to 'Edit', edit_article_path(article)
+      %li=# link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
+
+- content_for :recently do
+  %ul
+    - @articles.each do |article|
+      %li
+        = link_to article do
+          %span.date= article.created_at.strftime("%m.%d")
+          = article.title

@@ -1,6 +1,7 @@
 @import "partials/base";
 @import "blueprint/colors";
 @import "compass/utilities/lists/horizontal-list";
+@import "compass/utilities/lists/bullets";
 
 body {
   header, #container, aside, footer {
@@ -30,6 +31,7 @@ body {
 $search-box-width: 200px;
 #title {
   h1 {
+    color: white;
     border-right: 1px solid ($border-color * 2);
     float: left;
     font-size: 2.25em;
@@ -65,6 +67,17 @@ $search-box-width: 200px;
 
 //////////////////////////
 //                      //
+//        More          //
+//                      //
+//////////////////////////
+article h1, section h1 {
+  font-size: 1.15em;
+  color: $font-color + #4c4c4c;
+  margin-bottom: 1.5em;
+}
+
+//////////////////////////
+//                      //
 //        Main          //
 //                      //
 //////////////////////////
@@ -72,22 +85,21 @@ $search-box-width: 200px;
   article {
     width: 48%;
     margin-left: 4%;
+
     &:first-child {
       margin: 0;
     }
 
-    h1 {
-      font-size: 1.15em;
-      color: $font-color + #4c4c4c;
-      margin-bottom: 1.5em;
-      a {
-        border-bottom: 1px dotted $border-color;
-      }
+    h1 a {
+      border-bottom: 1px dotted $border-color;
     }
 
-    p {
+    section {
       text-align: justify;
-      line-height: 1.75em;
+      $line-height: 1.75em;
+      line-height: $line-height;
+      max-height: 12 * $line-height;
+      overflow: hidden;
     }
 
     ul.meta {
@@ -96,6 +108,7 @@ $search-box-width: 200px;
       color: $quiet-color;
       border-top: 1px solid $border-color;
       padding: 0.5em;
+      margin-top: 0.5em;
       li {
         border-left: 1px solid $border-color;
         line-height: 0.8em;
@@ -107,3 +120,40 @@ $search-box-width: 200px;
   }
 }
 
+//////////////////////////////
+//                          //
+//        Ancillary         //
+//                          //
+//////////////////////////////
+aside {
+  color: $alt-text-color;
+  section {
+    width: 30%;
+    margin-left: 5%;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  h1 {
+    color: white;
+  }
+
+  ul {
+    @include no-bullets;
+    padding-left: 0;
+    border-top: 1px solid $secondary-border-color;
+  }
+
+  li {
+    border-bottom: 1px solid $secondary-border-color;
+    padding: 0.5em 0;
+    a:hover, a:hover span {
+      color: white;
+    }
+  }
+
+  span.date {
+    color: $font-color;
+    padding-right: 1.5em;
+  }
+}

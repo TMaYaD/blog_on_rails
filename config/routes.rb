@@ -1,7 +1,7 @@
 BlogOnRails::Application.routes.draw do
   devise_for :users
 
-  resources :articles
+  resources :articles, :only => [:index, :show]
 
   root :to => "articles#index"
 end
