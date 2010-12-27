@@ -2,7 +2,7 @@
 - @articles[start, 2].each do |article|
   %article
     %h1= link_to article.title, article
-    %section= raw article.content
+    %section= article.rendered
     %ul.meta
       %li= article.parent && article.parent.title
       %li= article.author

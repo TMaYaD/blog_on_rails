@@ -6,4 +6,12 @@ class Article < ActiveRecord::Base
                       :foreign_key => "parent_id"
 
   has_paper_trail
+
+  def rendered
+    if content.match(/^\.\. -\*- mode: rst -\*-\r\n\r\n/)
+      "<pre>#{content}</pre>".html_safe
+    else
+      self.content.html_safe
+    end
+  end
 end

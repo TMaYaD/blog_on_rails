@@ -16,14 +16,14 @@
     %p= link_to 'Back', articles_path
 %article
   %h1= @article.title
-  %section=raw @article.content
+  %section= @article.rendered
 
 -content_for :ancillary do
   %aside=# render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
   - @article.replies.each do |reply|
     %article
       %h4= reply.title
-      %section=raw reply.content
+      %section= reply.rendered
       %ul.meta
         %li= reply.author
         %li= reply.created_at
