@@ -28,6 +28,23 @@
         %li= reply.author
         %li= reply.created_at
         %li= link_to 'Show', reply
+-content_for :recently do
+  %ul
+    -next_posts = next_posts(@article.created_at).reverse
+    -next_posts.each do |article|
+      %li
+        = link_to article do
+          %span.date= article.created_at.strftime("%m.%d")
+          = article.title
+    %li.current
+      %span.date= @article.created_at.strftime("%m.%d")
+      = @article.title
+    -prev_posts = prev_posts(@article.created_at, 9 - next_posts.count)
+    -prev_posts.each do |article|
+      %li
+        = link_to article do
+          %span.date= article.created_at.strftime("%m.%d")
+          = article.title
 
 -content_for :head do
   =stylesheet_link_tag 'show'

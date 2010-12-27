@@ -1,5 +1,4 @@
-- start = params[:offset].to_i > 4 ? 4 : params[:offset].to_i
-- @articles[start, 2].each do |article|
+- @articles.each do |article|
   %article
     %h1= link_to article.title, article
     %section= article.rendered
@@ -12,8 +11,20 @@
 
 - content_for :recently do
   %ul
+    - next_posts = next_posts(@articles.first.created_at).reverse
+    - next_posts.each do |article|
+      %li.current
+        = link_to article do
+          %span.date= article.created_at.strftime("%m.%d")
+          = article.title
     - @articles.each do |article|
-      %li
+      %li.current
+        = link_to article do
+          %span.date= article.created_at.strftime("%m.%d")
+          = article.title
+    -prev_posts = prev_posts(@articles.last.created_at, 8 - next_posts.count)
+    -prev_posts.each do |article|
+      %li.current
         = link_to article do
           %span.date= article.created_at.strftime("%m.%d")
           = article.title
