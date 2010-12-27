@@ -9,7 +9,9 @@ class Article < ActiveRecord::Base
 
   def rendered
     if content.match(/^\.\. -\*- mode: rst -\*-\r\n\r\n/)
-      "<pre>#{content}</pre>".html_safe
+      Net::HTTP.post_form( URI.parse('http://restructuredtext.appspot.com/api/v1/rst2html/'), {
+          :rst => self.content
+      }).body.html_safe
     else
       self.content.html_safe
     end
