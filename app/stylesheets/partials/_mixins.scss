@@ -13,4 +13,6 @@
       margin-right: $total-margin - (($cols - 1) * $margin-width);
     }
   }
+
+  display: inline-block;
 }

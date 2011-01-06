@@ -20,14 +20,15 @@
 
 -content_for :ancillary do
   %aside=# render 'form', :article => Article.new( :parent => @article, :title => 'Re: ' + @article.title )
-  - @article.replies.each do |reply|
-    %article
-      %h4= reply.title
-      %section= reply.rendered
-      %ul.meta
-        %li= reply.author
-        %li= reply.created_at
-        %li= link_to 'Show', reply
+  #comments
+    - @article.replies.each do |reply|
+      %article
+        %h4= reply.title
+        %section= reply.rendered
+        %ul.meta
+          %li= reply.author
+          %li= reply.created_at
+          %li= link_to 'Show', reply
 -content_for :recently do
   %ul
     -next_posts = next_posts(@article.created_at).reverse

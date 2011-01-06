@@ -1,12 +1,16 @@
 @import 'partials/base';
 @import 'partials/mixins';
 
-article {
+.main article, #comments {
   @include multicolumn(30%, 2);
 }
+
+#comments article {
+  width: 100%;
+}
+
 .main, .ancillary {
   aside {
-    display: inline-block;
     @include multicolumn(30%);
     padding: 0.65em 0 0 0;
     section {
