@@ -3,11 +3,13 @@
     %h1= link_to article.title, article
     %section= article.rendered
     %ul.meta
-      %li= article.parent && article.parent.title
-      %li= article.author
-      %li= article.created_at
-      %li=# link_to 'Edit', edit_article_path(article)
-      %li=# link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
+      /%li= article.parent && article.parent.title
+      %li= article.author || "Anonymous"
+      %li= link_to 'Leave a comment', article_path(article, :anchor => "reply")
+      %li no tags (yet)
+      %li Posted #{article.created_at.strftime("on %a, %d %b %Y at %H:%M")}
+      /%li= link_to 'Edit', edit_article_path(article)
+      /%li= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
 
 - content_for :recently do
   %ul
